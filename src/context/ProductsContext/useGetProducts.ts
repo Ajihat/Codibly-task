@@ -29,13 +29,20 @@ export const useGetProducts = (productsPage: number) => {
 						apiResponse: response.data,
 					});
 				}
-			} catch {
-				console.log('error');
-				setProductsState({
-					isLoading: false,
-					apiErrorText: 'error',
-					apiResponse: null,
-				});
+			} catch (e) {
+				if (axios.isAxiosError(e)) {
+					setProductsState({
+						isLoading: false,
+						apiErrorText: `Error: ${e.response?.status}`,
+						apiResponse: null,
+					});
+				} else {
+					setProductsState({
+						isLoading: false,
+						apiErrorText: 'We are sorry, something went wrong',
+						apiResponse: null,
+					});
+				}
 			}
 		};
 		getData();
