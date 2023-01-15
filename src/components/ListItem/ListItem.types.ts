@@ -3,4 +3,5 @@ export interface ListItemProps {
 	name: string;
 	year: number;
 	color: string;
+	index: number;
 }

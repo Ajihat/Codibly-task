@@ -15,6 +15,8 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				isLoading,
 				apiErrorText,
 				apiResponse,
+				productsPage,
+				setProductsPage,
 			}}
 		>
 			{children}

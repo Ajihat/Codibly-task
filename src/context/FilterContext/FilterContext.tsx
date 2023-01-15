@@ -1,11 +1,15 @@
 import { createContext, useState } from 'react';
 
+import { useGetProduct } from 'components/Popup/useGetProduct';
+
 import { FilterProviderProps, IFilterContext } from './FilterContext.types';
 
 export const FilterContext = createContext<IFilterContext | null>(null);
 
 export const FilterProvider = ({ children }: FilterProviderProps) => {
 	const [inputText, setInputText] = useState('');
+	const { isLoading, apiErrorText, apiResponse } = useGetProduct(Number(inputText));
+	console.log(apiResponse);
 
 	const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
@@ -18,6 +22,9 @@ export const FilterProvider = ({ children }: FilterProviderProps) => {
 			value={{
 				inputText,
 				changeInputValue,
+				isLoading,
+				apiErrorText,
+				apiResponse,
 			}}
 		>
 			{children}

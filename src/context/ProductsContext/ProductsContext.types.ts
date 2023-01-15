@@ -26,4 +26,6 @@ export interface IProductsContext {
 	isLoading: boolean;
 	apiErrorText: string;
 	apiResponse: ApiResponse | null;
+	productsPage: number;
+	setProductsPage: React.Dispatch<React.SetStateAction<number>>;
 }
